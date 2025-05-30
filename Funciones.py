@@ -144,7 +144,6 @@ def cargar_puntuacion(matriz_votos:list) -> bool:
         retorno = False
                 
 
-        
     return retorno
 
 def mostrar_por_participante(array_nombre: list, matriz_votos: list, indice)-> bool:
@@ -191,7 +190,7 @@ def mostrar_promedio_participante(array_nombres: list, matriz_votos: list) -> bo
         total_puntaje = sumar_fila(matriz_votos,fil)
         promedio = calcular_promedio(total_puntaje,len(matriz_votos[fil]))
         print(f"PUNTAJE PARTICIPANTE {array_nombres[fil]} PROMEDIO: {round(promedio,2)}/10")
-        
+       
 def calcular_menor_cuatro(matriz_votos:list,array_nombres: list) -> float | bool:
     """Calcula el promedio menor a 4 de todos los participantes
 
@@ -211,7 +210,7 @@ def calcular_menor_cuatro(matriz_votos:list,array_nombres: list) -> float | bool
             print(f"Participante {array_nombres[fil]} tiene un promedio de: {round(promedio,2)}")
        
         
-        
+
     return resultado
 
 def calcular_menor_ocho(matriz_votos:list,array_nombres: list) -> float | bool:
@@ -224,14 +223,14 @@ def calcular_menor_ocho(matriz_votos:list,array_nombres: list) -> float | bool:
     Returns:
         float: Retorna un print si es verdadero , si no solo false.
     """
+    resultado = False
     for fil in range(len(matriz_votos)):
         total_puntaje = sumar_fila(matriz_votos,fil)
         promedio = calcular_promedio(total_puntaje,len(matriz_votos))
         if promedio < 8:
             resultado = True
             print(f"Participante {array_nombres[fil]} tiene un promedio de: {round(promedio,2)}")
-        else:
-            resultado = False
+        
         
         
     return resultado
@@ -305,8 +304,7 @@ def encontrar_jurado(lista_promedios: list, opcion: str) -> int:
         else:
             print(f"El jurado {jurado} fue el mas estricto")
                  
-
-def calcular_jurado_estricto(matriz_votos: list) -> str:
+def calcular_jurado_estricto(matriz_votos: list) -> None:
     """Calcula el jurado mas estricto
 
     Args:
@@ -322,11 +320,8 @@ def calcular_jurado_estricto(matriz_votos: list) -> str:
         promedio = calcular_promedio(suma_col,len(matriz_votos))
         promedios += [promedio]
     encontrar_jurado(promedios,"Estricto")                              
-    
-
-
-    
-def calcular_jurado_generoso(matriz_votos: list) -> str:
+        
+def calcular_jurado_generoso(matriz_votos: list) -> None:
     """Calcula el jurado mas generoso
 
     Args:
@@ -341,9 +336,8 @@ def calcular_jurado_generoso(matriz_votos: list) -> str:
         suma_col = sumar_columna(matriz_votos,col)
         promedio = calcular_promedio(suma_col,len(matriz_votos))
         promedios += [promedio]
-    encontrar_jurado(promedios,"Generoso")
-    
-calcular_jurado_generoso([[1,3,3],[0,3,3],[1,3,3]])
+    encontrar_jurado(promedios,"Generoso")   
+
 def encontrar_iguales(total: list, array_nombre: int) -> bool:
     """Encuentra los participantes con la misma suma de votos
 
